@@ -10,3 +10,13 @@
       git:
         dest: /var/www/html
         repo: https://github.com/linuxacademy/content-introduction-to-ansible.git
+
+    - name: Start the Apache service
+      service:
+        name: httpd
+        state: started
+    - name: Modify the firewall rules
+      firewalld:
+        service: http
+        permanent: yes
+        state: enabled
